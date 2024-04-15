@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/encoresky/react-mobile-share/issues"
   },
-  "homepage": "https://github.com/encoresky/react-mobile-share#readme"
+  "homepage": "https://github.com/encoresky/react-mobile-share#readme",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
 }
