@@ -1,44 +1,54 @@
-const dataURLtoFile = (dataurl) => {
+const dataURLtoFile = (dataurl: string) => {
   if (!dataurl) {
-    return;
+    return
   }
-  var arr = dataurl.split(","),
-    mime = arr[0].match(/:(.*?);/)[1],
-    bstr = atob(arr[1]),
-    n = bstr.length,
-    u8arr = new Uint8Array(n);
+  const arr = dataurl.split(",")
+  const mime = arr[0].match(/:(.*?);/)![1]
+  const bstr = atob(arr[1])
+  let n = bstr.length
+  const u8arr = new Uint8Array(n)
 
   while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
+    u8arr[n] = bstr.charCodeAt(n)
   }
 
-  return new File([u8arr], "image.jpg", { type: mime });
-};
+  return new File([u8arr], "image.jpg", { type: mime })
+}
 
-exports.shareOnMobile = (params, fallback) => {
-  const { url, title, images } = params;
+export interface Data {
+  text?: string
+  url?: string
+  title: string
+  images?: string[]
+}
+
+const shareOnMobile = (
+  data: Data,
+  fallbackFunction?: (message: string) => void
+) => {
+  const { url, title, images } = data
 
   if (navigator.share === undefined) {
-    fallback?.(
+    fallbackFunction?.(
       "Can't share on this, make sure you are running on Android or iOS devices"
-    );
-    console.error("error: navigator.share is not available");
-    return;
+    )
+    console.error("error: navigator.share is not available")
+    return
   }
   if (!title) {
-    fallback?.("Title is required");
-    console.error("error: title is requied");
-    return;
+    fallbackFunction?.("Title is required")
+    console.error("error: title is required")
+    return
   }
 
-  var shareData = { text: title, title };
+  const shareData: ShareData = { text: title, title }
   if (url) {
-    shareData.url = url;
+    shareData.url = url
   }
   if (Array.isArray(images)) {
-    var files = images.map((image) => dataURLtoFile(image));
+    const files = images.map(image => dataURLtoFile(image)!)
     if (files) {
-      shareData.files = files;
+      shareData.files = files
     }
   }
   try {
@@ -46,13 +56,17 @@ exports.shareOnMobile = (params, fallback) => {
       navigator
         .share(shareData)
         .then(() => console.info("Shared successful."))
-        .catch((error) => {
-          fallback?.(error.message);
-          console.error("Sharing failed ..", error);
-        });
+        .catch(error => {
+          fallbackFunction?.(error.message)
+          console.error("Sharing failed ..", error)
+        })
     }
   } catch (error) {
-    fallback?.(error.message);
-    console.error("error: ", error);
+    if (error instanceof Error) {
+      fallbackFunction?.(error.message)
+    }
+    console.error("error: ", error)
   }
-};
+}
+
+export { shareOnMobile }
