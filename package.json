@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/encoresky/react-mobile-share#readme",
   "devDependencies": {
+    "tsup": "^8.0.2",
     "typescript": "^5.4.5"
   }
 }
