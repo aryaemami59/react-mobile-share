@@ -19,7 +19,8 @@
     }
   },
   "files": [
-    "index.js"
+    "index.ts",
+    "dist"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
