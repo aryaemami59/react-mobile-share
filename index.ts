@@ -62,6 +62,46 @@ export interface Data {
   images?: string[]
 }
 
+/**
+ * Shares content on mobile devices using the
+ * {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API Web Share API}.
+ * If the Web Share API is not available, a fallback function can be provided.
+ *
+ * @param data - The data to be shared, which includes a URL, a title, and an optional array of image URLs.
+ * @param fallbackFunction - An optional fallback function to be called if sharing is not possible.
+ *
+ * @example
+ * ```tsx
+ * import React from "react"
+ * import { shareOnMobile } from "react-mobile-share"
+ *
+ * const imgBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2..."
+ *
+ * const App = () => {
+ *   return (
+ *     <div>
+ *       <button
+ *         onClick={() =>
+ *           shareOnMobile(
+ *             {
+ *               text: "Hey checkout our package react-mobile-share",
+ *               url: "https://www.npmjs.com/package/react-mobile-share",
+ *               title: "React-Mobile-Share",
+ *               images: [imgBase64],
+ *             },
+ *             errorMessage => console.error("Share failed:", errorMessage),
+ *           )
+ *         }
+ *       >
+ *         Share
+ *       </button>
+ *     </div>
+ *   )
+ * }
+ *
+ * export default App
+ * ```
+ */
 const shareOnMobile = (
   data: Data,
   fallbackFunction?: (message: string) => void
