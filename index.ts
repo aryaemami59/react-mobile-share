@@ -106,7 +106,7 @@ const shareOnMobile = (
   data: Data,
   fallbackFunction?: (message: string) => void
 ) => {
-  const { url, title, images } = data
+  const { url, title, images, text } = data
 
   if (navigator.share === undefined) {
     fallbackFunction?.(
@@ -121,7 +121,7 @@ const shareOnMobile = (
     return
   }
 
-  const shareData: ShareData = { text: title, title }
+  const shareData: ShareData = { text, title }
   if (url) {
     shareData.url = url
   }
