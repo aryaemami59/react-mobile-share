@@ -31,10 +31,34 @@ const dataURLtoFile = (dataurl: string) => {
   return new File([u8arr], "image.jpg", { type: mime })
 }
 
+/**
+ * Represents the structure for data intended to be shared across
+ * various platforms using Web APIs.
+ */
 export interface Data {
-  text?: string
-  url?: string
+  /**
+   * The title of the content to be shared.
+   * This field is mandatory and typically used as the primary label or
+   * identifier of the shared content.
+   */
   title: string
+
+  /**
+   * Optional text to accompany the shared content.
+   * This could be a description or additional text not covered by the title.
+   */
+  text?: string
+
+  /**
+   * Optional URL to share. This could point to a webpage, a media file, or any
+   * other online resource.
+   */
+  url?: string
+
+  /**
+   * An optional array of image URLs (in Base64 format or standard URLs)
+   * intended to be included in the share.
+   */
   images?: string[]
 }
 
