@@ -1,3 +1,19 @@
+/**
+ * Converts a Base64-encoded data URL to a {@linkcode File} object.
+ *
+ * @param dataurl - A string representing the Base64-encoded data URL. The format should be `"data:[<MIME type>];base64,<data>"`.
+ * @returns A {@linkcode File} object containing the image data if the input string is valid, or `undefined` if the input is invalid.
+ *
+ * @example
+ * ```ts
+ * const dataUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...";
+ * const imageFile = dataURLtoFile(dataUrl);
+ * if (imageFile) {
+ *   console.log(imageFile.name); // "image.jpg"
+ *   console.log(imageFile.type); // extracted MIME type (e.g., "image/png")
+ * }
+ * ```
+ */
 const dataURLtoFile = (dataurl: string) => {
   if (!dataurl) {
     return
