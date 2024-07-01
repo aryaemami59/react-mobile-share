@@ -2,12 +2,29 @@
   "name": "react-mobile-share",
   "version": "1.0.31",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
   "files": [
-    "index.js"
+    "index.ts",
+    "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf dist && tsup",
+    "prepack": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,5 +45,10 @@
   "bugs": {
     "url": "https://github.com/encoresky/react-mobile-share/issues"
   },
-  "homepage": "https://github.com/encoresky/react-mobile-share#readme"
+  "homepage": "https://github.com/encoresky/react-mobile-share#readme",
+  "devDependencies": {
+    "rimraf": "^5.0.7",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.2"
+  }
 }
