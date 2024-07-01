@@ -23,8 +23,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && tsup",
-    "prepack": "npm run build"
+    "build": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -47,8 +46,6 @@
   },
   "homepage": "https://github.com/encoresky/react-mobile-share#readme",
   "devDependencies": {
-    "rimraf": "^5.0.7",
-    "tsup": "^8.1.0",
     "typescript": "^5.5.2"
   }
 }
