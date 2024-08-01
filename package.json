@@ -23,7 +23,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && tsup",
+    "build": "tsup",
     "prepack": "npm run build"
   },
   "repository": {
