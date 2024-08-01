@@ -110,6 +110,7 @@ This will invoked when any failure occures.
 ## 🤝🏼 Contributions
 
 “We welcome pull requests! Explore open issues to find opportunities to contribute or open a new issue to share your ideas or report bugs—your help improves this library
-[Read Guidelines]([https://github.com/encoresky/react-mobile-share/blob/main/LICENSE](https://github.com/encoresky/react-mobile-share/blob/main/CONTRIBUTION.md))
+
+[Contrbution Guidelines](https://github.com/encoresky/react-mobile-share/blob/main/CONTRIBUTION.md)
 
 
