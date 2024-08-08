@@ -30,7 +30,6 @@ yarn add react-mobile-share # yarn
 ## 📦 Usage
 
 ```tsx
-import React from "react";
 import { shareOnMobile } from "react-mobile-share";
 
 const imgBase64 = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2...";
@@ -76,14 +75,14 @@ Takes the following parameters:
 
 ```
 {
-    text: <string>,
+    text: "Hey checkout our package react-mobile-share",
     url: "https://www.npmjs.com/package/react-mobile-share",
     title: "React-Mobile-Share",
     images: [imgBase64],
 }
 ```
 
-Object must contains the following fields:
+Object must contain the following fields:
 | Field | Type | Description |
 | :-------- | :------- | :-------------------------------- |
 | `title` | `string` | **Required**. Must have a title.|
@@ -99,7 +98,7 @@ function(message) {
 }
 ```
 
-This will invoked when any failure occures.
+This will invoked when any failure occurs.
 
 ## 📜 License
 
